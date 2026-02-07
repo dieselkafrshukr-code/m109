@@ -10,7 +10,7 @@ const errorMessage = document.getElementById('errorMessage');
 // Correct date
 const CORRECT_DAY = 26;
 const CORRECT_MONTH = 6;
-const CORRECT_YEAR = 2025;
+const CORRECT_YEAR = 2005;
 
 // Auto-focus first input
 dayInput.focus();
@@ -114,15 +114,15 @@ function unlockMessage() {
     // Add success animation to button
     unlockBtn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
     unlockBtn.innerHTML = '<span class="btn-text">✓ صحيح!</span>';
-    
+
     // Wait a bit then transition
     setTimeout(() => {
         loginScreen.style.animation = 'fadeOut 0.8s ease-out forwards';
-        
+
         setTimeout(() => {
             loginScreen.style.display = 'none';
             messageScreen.classList.add('show');
-            
+
             // Create confetti effect
             createConfetti();
         }, 800);
@@ -149,7 +149,7 @@ document.head.appendChild(fadeOutStyle);
 function createConfetti() {
     const colors = ['#ffd700', '#ff6b6b', '#4CAF50', '#2196F3', '#ff69b4'];
     const confettiCount = 50;
-    
+
     for (let i = 0; i < confettiCount; i++) {
         setTimeout(() => {
             const confetti = document.createElement('div');
@@ -163,9 +163,9 @@ function createConfetti() {
             confetti.style.zIndex = '9999';
             confetti.style.pointerEvents = 'none';
             confetti.style.animation = `confettiFall ${2 + Math.random() * 2}s linear forwards`;
-            
+
             document.body.appendChild(confetti);
-            
+
             setTimeout(() => {
                 confetti.remove();
             }, 4000);
@@ -204,7 +204,7 @@ inputs.forEach((input, index) => {
     input.addEventListener('focus', () => {
         input.style.transform = 'scale(1.05)';
     });
-    
+
     input.addEventListener('blur', () => {
         input.style.transform = 'scale(1)';
     });
