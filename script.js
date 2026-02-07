@@ -10,7 +10,7 @@ const errorMessage = document.getElementById('errorMessage');
 // Correct date
 const CORRECT_DAY = 26;
 const CORRECT_MONTH = 6;
-const CORRECT_YEAR = 2005;
+const CORRECT_YEAR = 2025;
 
 // Auto-focus first input
 dayInput.focus();
