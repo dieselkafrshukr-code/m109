@@ -40,7 +40,8 @@ yearInput.addEventListener('keypress', (e) => {
 function checkDate() {
     // Helper to convert Arabic/Eastern numerals to English
     const toEnglishDigits = (str) => {
-        return str.replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+        if (!str) return '';
+        return str.toString().replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
     }
 
     // Get raw values
@@ -187,12 +188,25 @@ unlockBtn.addEventListener('click', checkDate);
 // Handle input sanitization (allow numbers only)
 function setupInput(input, maxLength) {
     input.addEventListener('input', (e) => {
-        // Remove any non-numeric characters
-        e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        // Only replace if non-numeric characters exist (prevents cursor jumping)
+        if (/[^0-9٠-٩]/.test(e.target.value)) {
+            e.target.value = e.target.value.replace(/[^0-9٠-٩]/g, '');
+        }
 
         // Limit length
         if (e.target.value.length > maxLength) {
             e.target.value = e.target.value.slice(0, maxLength);
+        }
+    });
+
+    // Prevent non-numeric keypresses (better UX)
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') return;
+        // Allow navigation keys
+        if (e.ctrlKey || e.metaKey || e.altKey || e.key.length > 1) return;
+
+        if (!/[0-9٠-٩]/.test(e.key)) {
+            e.preventDefault();
         }
     });
 }
