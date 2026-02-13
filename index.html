@@ -4,210 +4,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>♥ رسالة خاصة - عيد الحب</title>
+    <title>♥ تجربة خاصة - إهداء</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Amiri:wght@400;700&family=Dancing+Script:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Amiri:wght@400;700&display=swap"
         rel="stylesheet">
 
-    <!-- Animation Libraries -->
+    <!-- Premium Animation Engines -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
-    <!-- صفحة تسجيل الدخول -->
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-outline"></div>
+
+    <!-- Premium Visual Canvas -->
+    <div class="visual-overlay">
+        <canvas id="canvas3d"></canvas>
+        <div class="noise-overlay"></div>
+        <div class="vignette"></div>
+        <div class="particles-js-container" id="particles-js"></div>
+    </div>
+
+    <!-- Decorative Elements (Vectors, not emojis) -->
+    <div class="floating-ornaments">
+        <div class="ornament ornament-1"></div>
+        <div class="ornament ornament-2"></div>
+        <div class="ornament ornament-3"></div>
+    </div>
+
+    <!-- Login Section -->
     <div id="login-page" class="login-container">
-        <!-- Particles.js Background -->
-        <div id="particles-js"></div>
-
-        <!-- 3D Floating Hearts -->
-        <canvas id="hearts-canvas"></canvas>
-
-        <!-- Animated Roses -->
-        <div class="roses-container">
-            <div class="rose rose-1">🌹</div>
-            <div class="rose rose-2">🌹</div>
-            <div class="rose rose-3">🌹</div>
-            <div class="rose rose-4">🌹</div>
-            <div class="rose rose-5">🌹</div>
-            <div class="rose rose-6">🌹</div>
-        </div>
-
-        <!-- Love Letters Flying -->
-        <div class="love-letters">
-            <div class="letter">💌</div>
-            <div class="letter">💌</div>
-            <div class="letter">💌</div>
-            <div class="letter">💌</div>
-        </div>
-
-        <!-- Cupid Arrows -->
-        <div class="cupid-arrows">
-            <div class="arrow">💘</div>
-            <div class="arrow">💘</div>
-            <div class="arrow">💘</div>
-        </div>
-
-        <div class="login-box animated-box">
-            <div class="lock-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-            </div>
-
-            <h1 class="login-title">رسالة خاصة</h1>
-            <p class="login-subtitle">اكتب التاريخ المهم علشان تقدر تدخل ♥</p>
-
-            <form id="login-form" class="login-form">
-                <div class="input-group">
-                    <input type="text" id="password-input" placeholder="DD/MM/YYYY" maxlength="10" autocomplete="off"
-                        required>
-                    <label for="password-input">التاريخ المهم</label>
+        <div class="login-box-wrapper">
+            <div class="login-box" data-tilt>
+                <div class="premium-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                            fill="currentColor" />
+                    </svg>
                 </div>
 
-                <button type="submit" class="submit-btn">
-                    <span>دخول</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3" />
-                    </svg>
-                </button>
+                <h1 class="login-title">رسالة خاصة</h1>
+                <p class="login-subtitle">يرجى كتابة التاريخ المميز للمتابعة</p>
 
-                <p id="error-message" class="error-message"></p>
-            </form>
+                <form id="login-form">
+                    <div class="input-field-wrapper">
+                        <input type="text" id="password-input" placeholder="DD/MM/YYYY" maxlength="10"
+                            autocomplete="off" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="login-btn">
+                        <span>دخول آمن</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+
+                    <p id="error-message" class="error-message"></p>
+                </form>
+            </div>
         </div>
     </div>
 
-    <!-- صفحة المحتوى -->
+    <!-- Content Section -->
     <div id="content-page" class="content-container hidden">
-        <!-- Valentine Particles -->
-        <div id="valentine-particles"></div>
-
-        <!-- Confetti Canvas -->
-        <canvas id="confetti-canvas"></canvas>
-
-        <!-- Floating Hearts 3D -->
-        <div class="floating-hearts-3d">
-            <div class="heart-3d">❤️</div>
-            <div class="heart-3d">💕</div>
-            <div class="heart-3d">💖</div>
-            <div class="heart-3d">💗</div>
-            <div class="heart-3d">💓</div>
-            <div class="heart-3d">💝</div>
-        </div>
-
-        <!-- Ring Hearts -->
-        <div class="heart-ring"></div>
-
-        <!-- Sparkles -->
-        <div class="sparkles-container"></div>
-
         <div class="content-wrapper">
-            <div class="header-section">
-                <div class="decorative-line"></div>
-                <h1 class="main-title">كلام من القلب</h1>
-                <div class="decorative-line"></div>
-            </div>
+            <header class="premium-header">
+                <div class="line"></div>
+                <h1 class="main-title" data-scroll-speed="2">كلمات صادقة</h1>
+                <div class="line"></div>
+            </header>
 
-            <div class="text-content">
-                <div class="verse">
-                    <p class="special-name">يا مصطفى</p>
+            <article class="message-card">
+                <div class="verse" data-animate="blur">
+                    <p class="special-highlight">يا مصطفى</p>
                     <p>مش عارفة إزاي وجود شخص واحد ممكن يغيّر تفاصيل يوم كامل بالشكل ده</p>
                     <p>بس اللي حاصل فعلًا إن كل حاجة بقت مختلفة من ساعة ما بقيت قريب</p>
                 </div>
 
-                <div class="separator">♥</div>
+                <div class="premium-divider">
+                    <svg width="100" height="20" viewBox="0 0 100 20">
+                        <path d="M0 10 Q 25 20 50 10 T 100 10" fill="none" stroke="var(--primary)" stroke-width="1" />
+                    </svg>
+                </div>
 
-                <div class="verse">
+                <div class="verse" data-animate="fade-up">
                     <p>يمكن عشان شخصية هادية وبتفكر كتير</p>
                     <p>يمكن عشان الطموح اللي باين في الكلام</p>
                     <p>أو يمكن عشان الإحساس اللي بييجي مع كل مرة يحصل فيها كلام</p>
                 </div>
 
-                <div class="separator">♥</div>
+                <div class="premium-divider">✦ ✧ ✦</div>
 
-                <div class="verse">
+                <div class="verse" data-animate="fade-up">
                     <p>لما بتتكلم عن كلية علوم وعن المواد والتجارب</p>
                     <p>بحس قد إيه في حد قدامي بيجتهد وبيحاول يبني مستقبل يستاهل</p>
-                    <p>وده بيخليني فخورة من غير ما أقول</p>
                 </div>
 
-                <div class="separator">♥</div>
+                <div class="premium-divider">✦ ✧ ✦</div>
 
-                <div class="verse">
-                    <p>في حضورك في راحة غريبة</p>
-                    <p>وكأن الدنيا بتهدى لوحدها</p>
-                    <p>والتفكير الكتير بيقف لحظة</p>
-                    <p>والقلب يبتدي يسمع أكتر ما يفكر</p>
+                <div class="verse" data-animate="fade-up">
+                    <p>في حضورك في راحة غريبة.. وكأن الدنيا بتهدى لوحدها</p>
                 </div>
 
-                <div class="separator">♥</div>
+                <div class="premium-divider">✦ ✧ ✦</div>
 
-                <div class="verse">
-                    <p>الضحكة ليها تأثير مش عادي</p>
-                    <p>والطريقة اللي بتتعامل بيها فيها احترام يخلي أي حد يحس بقيمته</p>
-                    <p>وده شعور مش سهل يتكرر</p>
+                <div class="verse" data-animate="fade-up">
+                    <p>الضحكة ليها تأثير مش عادي.. والطريقة اللي بتتعامل بيها فيها احترام يخلي أي حد يحس بقيمته</p>
                 </div>
 
-                <div class="separator">♥</div>
+                <div class="premium-divider">✦ ✧ ✦</div>
 
-                <div class="verse">
-                    <p>يمكن الموضوع بدأ بسيط</p>
-                    <p>نظرة .. كلمة .. موقف عابر</p>
-                    <p>لكن مع الوقت الإحساس كبر وبقى أوضح وبقى ليه مكان ثابت</p>
-                </div>
-
-                <div class="separator">♥</div>
-
-                <div class="verse">
-                    <p>مصطفى</p>
+                <div class="verse" data-animate="fade-up">
+                    <p class="special-highlight">مصطفى</p>
                     <p>اللي جوايا مش مجرد إعجاب ولا انبهار بشخص ناجح</p>
                     <p>ده إحساس إن في حد مناسب .. حد مريح</p>
                     <p>حد لما يبقى موجود تحس إن الدنيا ماشية صح</p>
                 </div>
 
-                <div class="separator">♥</div>
+                <div class="premium-divider">✦ ✧ ✦</div>
 
-                <div class="verse">
+                <div class="verse" data-animate="fade-up">
                     <p>التفاصيل الصغيرة اللي يمكن متاخدش بالك منها .. بالنسبة لي بتفرق</p>
                     <p>طريقة الكلام .. الاهتمام .. السؤال حتى لو بسيط</p>
-                    <p>كل ده بيتجمع ويعمل قيمة كبيرة</p>
                 </div>
 
-                <div class="separator">♥</div>
+                <div class="premium-divider">✦ ✧ ✦</div>
 
-                <div class="verse">
-                    <p>يمكن الكلام ده يبان كتير بس الحقيقة إن اللي جوايا أكتر</p>
-                    <p>وفي مشاعر بتكبر بهدوء ومن غير صوت بس واضحة جدًا</p>
+                <div class="verse last-verse" data-animate="scale-up">
+                    <p class="special-highlight">وجودك جميل وقيمته أكبر من أي وصف</p>
+                    <p class="special-highlight special-gold">كل الحب ليك يا مصطفى ♥</p>
                 </div>
+            </article>
 
-                <div class="separator">♥</div>
-
-                <div class="verse ending-verse">
-                    <p class="highlighted">وجودك جميل وقيمته أكبر من أي وصف</p>
-                    <p class="highlighted">والأيام اللي فيها كلام أو مقابلة</p>
-                    <p class="highlighted">بتبقى أخف .. وأسرع .. وأحلى</p>
-                    <p class="highlighted special">كل الحب ليك يا مصطفى ♥</p>
-                </div>
-            </div>
-
-            <div class="footer-section">
-                <div class="hearts-row">
-                    <span>♥</span>
-                    <span>♥</span>
-                    <span>♥</span>
-                </div>
-            </div>
+            <footer class="premium-footer">
+                <p>© 2024 تجربة فنية رقمية</p>
+            </footer>
         </div>
     </div>
 
+    <!-- Initialization Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
     <script src="valentine-animations.js"></script>
 </body>
