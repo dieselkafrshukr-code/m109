@@ -4,15 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>روح قلبي</title>
+    <title>إلى أغلى ما أملك</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Amiri:wght@400;700&display=swap"
-        rel="stylesheet">
 
-    <!-- Scripts -->
+    <!-- Heavy-Duty Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -20,24 +15,23 @@
 
 <body>
 
-    <!-- UI Elements -->
-    <div class="cursor-follower" id="cursor-follower"></div>
-
+    <!-- Visual Foundation -->
     <div id="particles-js"></div>
     <canvas id="canvas3d"></canvas>
+    <div class="cursor-follower" id="cursor"></div>
 
-    <!-- Login Page -->
-    <div id="login-page" class="login-container">
+    <!-- 1. Interactive Entrance -->
+    <main id="login-page" class="login-container">
         <div class="login-card">
-            <div class="heart-icon-wrapper">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="45" height="45">
+            <div class="heart-glow">
+                <svg viewBox="0 0 24 24" fill="#e63946" width="40" height="40">
                     <path
                         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
             </div>
 
             <h1 class="login-title">روح قلبي</h1>
-            <p class="login-subtitle">أهلاً بك يا أغلى ما أملك</p>
+            <p class="login-subtitle">يرجى تأكيد التاريخ المميز الخاص بنا</p>
 
             <form id="login-form">
                 <div class="input-group">
@@ -46,24 +40,24 @@
                 </div>
 
                 <button type="submit" class="login-btn">
-                    دخول إلى قلبي ❤️
+                    دخول إلى عالمي ❤️
                 </button>
 
                 <p id="error-message" class="error-message"></p>
             </form>
         </div>
-    </div>
+    </main>
 
-    <!-- Content Page -->
-    <div id="content-page" class="content-container hidden">
+    <!-- 2. Emotional Content -->
+    <section id="content-page" class="content-container hidden">
         <article class="message-card">
-            <div class="verse">
-                <span class="highlight">يا مصطفى</span>
+            <header class="verse">
+                <span class="special-name">يا مصطفى</span>
                 <p>مش عارفة إزاي وجود شخص واحد ممكن يغيّر تفاصيل يوم كامل بالشكل ده</p>
                 <p>بس اللي حاصل فعلًا إن كل حاجة بقت مختلفة من ساعة ما بقيت قريب</p>
-            </div>
+            </header>
 
-            <div class="divider">❦</div>
+            <div class="premium-divider"></div>
 
             <div class="verse">
                 <p>يمكن عشان شخصية هادية وبتفكر كتير</p>
@@ -71,33 +65,36 @@
                 <p>أو يمكن عشان الإحساس اللي بييجي مع كل مرة يحصل فيها كلام</p>
             </div>
 
-            <div class="divider">❦</div>
+            <div class="premium-divider"></div>
 
             <div class="verse">
                 <p>لما بتتكلم عن كلية علوم وعن المواد والتجارب</p>
                 <p>بحس قد إيه في حد قدامي بيجتهد وبيحاول يبني مستقبل يستاهل</p>
             </div>
 
-            <div class="div-center" style="text-align: center; color: var(--primary); font-size: 2rem;">❤</div>
+            <div class="premium-divider"></div>
 
             <div class="verse">
+                <p>في حضورك في راحة غريبة.. وكأن الدنيا بتهدى لوحدها</p>
                 <p>الضحكة ليها تأثير مش عادي.. والطريقة اللي بتتعامل بيها فيها احترام يخلي أي حد يحس بقيمته</p>
             </div>
 
+            <div class="premium-divider"></div>
+
             <div class="verse">
-                <span class="highlight">مصطفى</span>
+                <span class="special-name">مصطفى</span>
                 <p>اللي جوايا مش مجرد إعجاب ولا انبهار بشخص ناجح</p>
                 <p>ده إحساس إن في حد مناسب .. حد مريح</p>
                 <p>حد لما يبقى موجود تحس إن الدنيا ماشية صح</p>
             </div>
 
-            <div class="verse last-verse">
-                <p class="highlight" style="font-size: 2.5rem;">كل الحب ليك يا مصطفى ♥</p>
-            </div>
+            <footer class="verse last-verse">
+                <p class="final-word">كل الحب ليك يا مصطفى ♥</p>
+            </footer>
         </article>
-    </div>
+    </section>
 
-    <!-- App Scripts -->
+    <!-- Logic Setup -->
     <script src="script.js"></script>
     <script src="valentine-animations.js"></script>
 </body>

@@ -79,44 +79,45 @@ const App = {
         sessionStorage.setItem('isLoggedIn', 'true');
         this.errorMessage.textContent = '';
 
-        // Premium transition sequence
+        // Final UI Transition Phase
         const tl = gsap.timeline();
 
         tl.to('.login-card', {
-            duration: 0.8,
-            y: -50,
+            duration: 1,
+            y: -100,
             opacity: 0,
-            scale: 0.9,
-            ease: "power4.inOut"
+            rotateX: 20,
+            ease: "expo.inOut"
         })
             .to(this.loginPage, {
-                duration: 0.5,
+                duration: 0.8,
                 opacity: 0,
                 display: 'none'
-            }, "-=0.2")
+            }, "-=0.5")
+            .call(() => {
+                this.contentPage.classList.remove('hidden');
+            })
             .fromTo(this.contentPage, {
-                display: 'block',
                 opacity: 0,
-                y: 100
+                y: 150,
+                scale: 0.95
             }, {
-                duration: 1.5,
+                duration: 1.8,
                 opacity: 1,
                 y: 0,
-                ease: "expo.out",
-                onComplete: () => {
-                    this.contentPage.classList.remove('hidden');
-                }
-            });
+                scale: 1,
+                ease: "expo.out"
+            }, "-=0.3");
     },
 
     loginFailure() {
         this.errorMessage.textContent = '❌ التاريخ غير صحيح، حاول مرة أخرى';
         gsap.to('.login-card', {
-            x: 20,
-            duration: 0.1,
-            repeat: 5,
+            x: 15,
+            duration: 0.08,
+            repeat: 7,
             yoyo: true,
-            ease: 'linear'
+            ease: 'power2.inOut'
         });
         this.passwordInput.value = '';
     },
@@ -127,13 +128,11 @@ const App = {
 
         if (!instant) {
             gsap.from(this.contentPage, {
-                duration: 1.5,
+                duration: 2,
                 opacity: 0,
-                y: 50,
+                y: 100,
                 ease: 'expo.out'
             });
-        } else {
-            this.contentPage.style.opacity = '1';
         }
     }
 };
