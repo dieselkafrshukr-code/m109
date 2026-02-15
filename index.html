@@ -32,45 +32,35 @@
         <div class="particles-js-container" id="particles-js"></div>
     </div>
 
-    <!-- Decorative Elements (Vectors, not emojis) -->
-    <div class="floating-ornaments">
-        <div class="ornament ornament-1"></div>
-        <div class="ornament ornament-2"></div>
-        <div class="ornament ornament-3"></div>
-    </div>
-
     <!-- Login Section -->
     <div id="login-page" class="login-container">
-        <div class="login-box-wrapper">
-            <div class="login-box" data-tilt>
-                <div class="premium-logo">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                        <path
-                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-                            fill="currentColor" />
-                    </svg>
+        <div class="login-box" data-tilt>
+            <div class="premium-logo">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+            </div>
+
+            <h1 class="login-title">روح قلبي</h1>
+            <p class="login-subtitle">أدخل تاريخنا المميز للمتابعة</p>
+
+            <form id="login-form">
+                <div class="input-field-wrapper">
+                    <input type="text" id="password-input" placeholder="DD/MM/YYYY" maxlength="10" autocomplete="off"
+                        required>
                 </div>
 
-                <h1 class="login-title">روح قلبي</h1>
-                <p class="login-subtitle">يرجى كتابة التاريخ المميز للمتابعة</p>
+                <button type="submit" class="submit-btn" id="login-btn">
+                    <span>دخول إلى قلبي</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </button>
 
-                <form id="login-form">
-                    <div class="input-field-wrapper">
-                        <input type="text" id="password-input" placeholder="DD/MM/YYYY" maxlength="10"
-                            autocomplete="off" required>
-                    </div>
-
-                    <button type="submit" class="submit-btn" id="login-btn">
-                        <span>دخول آمن</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </button>
-
-                    <p id="error-message" class="error-message"></p>
-                </form>
-            </div>
+                <p id="error-message" class="error-message"
+                    style="color: var(--primary-bright); margin-top: 1.5rem; font-size: 0.9rem;"></p>
+            </form>
         </div>
     </div>
 
@@ -78,75 +68,70 @@
     <div id="content-page" class="content-container hidden">
         <div class="content-wrapper">
             <header class="premium-header">
-                <div class="line"></div>
-                <h1 class="main-title" data-scroll-speed="2">كلمات صادقة</h1>
-                <div class="line"></div>
+                <h1 class="main-title">نبض قلبي</h1>
             </header>
 
             <article class="message-card">
-                <div class="verse" data-animate="blur">
+                <div class="verse">
                     <p class="special-highlight">يا مصطفى</p>
                     <p>مش عارفة إزاي وجود شخص واحد ممكن يغيّر تفاصيل يوم كامل بالشكل ده</p>
                     <p>بس اللي حاصل فعلًا إن كل حاجة بقت مختلفة من ساعة ما بقيت قريب</p>
                 </div>
 
-                <div class="premium-divider">
-                    <svg width="100" height="20" viewBox="0 0 100 20">
-                        <path d="M0 10 Q 25 20 50 10 T 100 10" fill="none" stroke="var(--primary)" stroke-width="1" />
-                    </svg>
-                </div>
+                <div class="premium-divider">❦</div>
 
-                <div class="verse" data-animate="fade-up">
+                <div class="verse">
                     <p>يمكن عشان شخصية هادية وبتفكر كتير</p>
                     <p>يمكن عشان الطموح اللي باين في الكلام</p>
                     <p>أو يمكن عشان الإحساس اللي بييجي مع كل مرة يحصل فيها كلام</p>
                 </div>
 
-                <div class="premium-divider">✦ ✧ ✦</div>
+                <div class="premium-divider">❦</div>
 
-                <div class="verse" data-animate="fade-up">
+                <div class="verse">
                     <p>لما بتتكلم عن كلية علوم وعن المواد والتجارب</p>
                     <p>بحس قد إيه في حد قدامي بيجتهد وبيحاول يبني مستقبل يستاهل</p>
                 </div>
 
-                <div class="premium-divider">✦ ✧ ✦</div>
+                <div class="premium-divider">❦</div>
 
-                <div class="verse" data-animate="fade-up">
+                <div class="verse">
                     <p>في حضورك في راحة غريبة.. وكأن الدنيا بتهدى لوحدها</p>
                 </div>
 
-                <div class="premium-divider">✦ ✧ ✦</div>
+                <div class="premium-divider">❦</div>
 
-                <div class="verse" data-animate="fade-up">
+                <div class="verse">
                     <p>الضحكة ليها تأثير مش عادي.. والطريقة اللي بتتعامل بيها فيها احترام يخلي أي حد يحس بقيمته</p>
                 </div>
 
-                <div class="premium-divider">✦ ✧ ✦</div>
+                <div class="premium-divider">❦</div>
 
-                <div class="verse" data-animate="fade-up">
+                <div class="verse">
                     <p class="special-highlight">مصطفى</p>
                     <p>اللي جوايا مش مجرد إعجاب ولا انبهار بشخص ناجح</p>
                     <p>ده إحساس إن في حد مناسب .. حد مريح</p>
                     <p>حد لما يبقى موجود تحس إن الدنيا ماشية صح</p>
                 </div>
 
-                <div class="premium-divider">✦ ✧ ✦</div>
+                <div class="premium-divider">❦</div>
 
-                <div class="verse" data-animate="fade-up">
+                <div class="verse">
                     <p>التفاصيل الصغيرة اللي يمكن متاخدش بالك منها .. بالنسبة لي بتفرق</p>
                     <p>طريقة الكلام .. الاهتمام .. السؤال حتى لو بسيط</p>
                 </div>
 
-                <div class="premium-divider">✦ ✧ ✦</div>
+                <div class="premium-divider">❦</div>
 
-                <div class="verse last-verse" data-animate="scale-up">
+                <div class="verse last-verse">
                     <p class="special-highlight">وجودك جميل وقيمته أكبر من أي وصف</p>
-                    <p class="special-highlight special-gold">كل الحب ليك يا مصطفى ♥</p>
+                    <p class="special-highlight" style="font-weight: 700; color: white !important;">كل الحب ليك يا مصطفى
+                        ♥</p>
                 </div>
             </article>
 
-            <footer class="premium-footer">
-                <p>© 2024 تجربة فنية رقمية</p>
+            <footer style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem;">
+                <p>© 2024 إهداء خاص مفعم بالحب</p>
             </footer>
         </div>
     </div>

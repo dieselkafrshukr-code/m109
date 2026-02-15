@@ -1,6 +1,6 @@
 /**
- * PREMUM ROMANTIC EXPERIENCE ENGINE
- * Built with: Three.js, GSAP, ScrollTrigger, Particles.js
+ * ETERNAL BLOOM EXPERIENCE ENGINE
+ * Theme: Ruby Heart & Velvet Night
  */
 
 const PremiumEngine = {
@@ -38,15 +38,15 @@ const PremiumEngine = {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Refined Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        // Ruby Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
         this.scene.add(ambientLight);
 
-        const pointLight1 = new THREE.PointLight(0xd4af37, 2, 100);
+        const pointLight1 = new THREE.PointLight(0xff4444, 2, 100);
         pointLight1.position.set(5, 5, 5);
         this.scene.add(pointLight1);
 
-        const pointLight2 = new THREE.PointLight(0xffffff, 1, 100);
+        const pointLight2 = new THREE.PointLight(0x8b0000, 3, 100);
         pointLight2.position.set(-5, -5, 5);
         this.scene.add(pointLight2);
 
@@ -57,7 +57,6 @@ const PremiumEngine = {
     },
 
     createHeart() {
-        // Optimized Heart Shape Path
         const heartShape = new THREE.Shape();
         heartShape.moveTo(0, 0);
         heartShape.bezierCurveTo(0, -0.3, -0.6, -0.3, -0.6, 0);
@@ -68,7 +67,7 @@ const PremiumEngine = {
         const extrudeSettings = {
             depth: 0.4,
             bevelEnabled: true,
-            bevelSegments: 12,
+            bevelSegments: 15,
             steps: 2,
             bevelSize: 0.2,
             bevelThickness: 0.2
@@ -78,29 +77,32 @@ const PremiumEngine = {
         geometry.center();
 
         const material = new THREE.MeshPhysicalMaterial({
-            color: 0xc29d59,
-            metalness: 0.9,
+            color: 0x8b0000, // Deep Ruby
+            metalness: 0.8,
             roughness: 0.1,
             reflectivity: 1,
             clearcoat: 1,
-            clearcoatRoughness: 0.1,
-            emissive: 0x221100,
-            emissiveIntensity: 0.2
+            clearcoatRoughness: 0.05,
+            emissive: 0x440000,
+            emissiveIntensity: 0.5
         });
 
         this.heart = new THREE.Mesh(geometry, material);
-        this.heart.rotation.x = Math.PI; // Correct orientation
+        this.heart.rotation.x = Math.PI;
         this.scene.add(this.heart);
     },
 
     createNebula() {
-        const count = 1000;
+        const count = 1500;
         const positions = new Float32Array(count * 3);
         const colors = new Float32Array(count * 3);
 
         for (let i = 0; i < count * 3; i++) {
-            positions[i] = (Math.random() - 0.5) * 15;
-            colors[i] = Math.random();
+            positions[i] = (Math.random() - 0.5) * 20;
+            // More Red/Crimson dust
+            if (i % 3 === 0) colors[i] = 0.8 + Math.random() * 0.2; // Red
+            else if (i % 3 === 1) colors[i] = 0.1 + Math.random() * 0.2; // Green
+            else colors[i] = 0.2 + Math.random() * 0.2; // Blue
         }
 
         const geometry = new THREE.BufferGeometry();
@@ -108,10 +110,10 @@ const PremiumEngine = {
         geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 0.04,
+            size: 0.03,
             vertexColors: true,
             transparent: true,
-            opacity: 0.4,
+            opacity: 0.5,
             blending: THREE.AdditiveBlending
         });
 
@@ -120,104 +122,84 @@ const PremiumEngine = {
     },
 
     /**
-     * Particles.js - Professional Background Dust
+     * Particles.js - Heart Dust
      */
     initParticles() {
         if (typeof particlesJS !== 'undefined') {
             particlesJS('particles-js', {
                 "particles": {
-                    "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": "#c29d59" },
-                    "shape": { "type": "circle" },
+                    "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#d43f3f" },
+                    "shape": { "type": "heart" },
                     "opacity": { "value": 0.2, "random": true },
-                    "size": { "value": 2, "random": true },
+                    "size": { "value": 3, "random": true },
                     "line_linked": { "enable": false },
-                    "move": { "enable": true, "speed": 0.6, "direction": "none", "random": true, "out_mode": "out" }
-                },
-                "interactivity": {
-                    "events": { "onhover": { "enable": true, "mode": "bubble" } },
-                    "modes": { "bubble": { "distance": 200, "size": 4, "duration": 2, "opacity": 0.5 } }
+                    "move": { "enable": true, "speed": 1, "direction": "top", "random": true, "out_mode": "out" }
                 }
             });
         }
     },
 
     /**
-     * Custom Cursor Logic
+     * Cursor Logic - Reliable & Smooth
      */
     initCursor() {
         const cursor = document.querySelector('.custom-cursor');
         const outline = document.querySelector('.custom-cursor-outline');
-
-        if (cursor && outline) {
-            document.body.classList.add('custom-cursor-active');
-        }
+        if (!cursor || !outline) return;
 
         window.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
-            gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.15 });
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.05, ease: "power2.out" });
+            gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.3, ease: "power2.out" });
         });
 
-        document.querySelectorAll('button, input').forEach(el => {
-            el.addEventListener('mouseenter', () => outline.style.transform = 'translate(-50%, -50%) scale(1.5)');
-            el.addEventListener('mouseleave', () => outline.style.transform = 'translate(-50%, -50%) scale(1)');
+        document.querySelectorAll('button, input, a').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                gsap.to(outline, { scale: 1.8, backgroundColor: "rgba(212, 63, 63, 0.1)", duration: 0.3 });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(outline, { scale: 1, backgroundColor: "transparent", duration: 0.3 });
+            });
         });
     },
 
     /**
-     * GSAP & ScrollTrigger - High-end reveals
+     * GSAP Reveals
      */
     initGSAP() {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Verse Animations
         document.querySelectorAll('.verse').forEach(verse => {
-            const type = verse.getAttribute('data-animate');
-
             gsap.from(verse, {
                 scrollTrigger: {
                     trigger: verse,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
+                    start: "top 90%",
                 },
-                duration: 1.2,
+                duration: 1.5,
                 opacity: 0,
-                y: type === 'fade-up' ? 50 : 0,
-                filter: type === 'blur' ? "blur(10px)" : "none",
-                scale: type === 'scale-up' ? 0.9 : 1,
-                ease: "power3.out"
+                y: 30,
+                filter: "blur(10px)",
+                ease: "expo.out"
             });
-        });
-
-        // Parallax for titles
-        gsap.to('.main-title', {
-            scrollTrigger: {
-                trigger: '.premium-header',
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            },
-            y: -100
         });
     },
 
     addEventListeners() {
         window.addEventListener('resize', () => {
+            if (!this.camera) return;
             this.camera.aspect = window.innerWidth / window.innerHeight;
             this.camera.updateProjectionMatrix();
             this.renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Magnetic Heart Effect
         window.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth - 0.5) * 2;
             const y = (e.clientY / window.innerHeight - 0.5) * 2;
-
             if (this.heart) {
                 gsap.to(this.heart.rotation, {
-                    y: x * 0.4,
-                    x: Math.PI + (y * 0.2),
-                    duration: 1.5,
+                    y: x * 0.5,
+                    x: Math.PI + (y * 0.3),
+                    duration: 2,
                     ease: "power2.out"
                 });
             }
@@ -227,18 +209,10 @@ const PremiumEngine = {
     animate() {
         requestAnimationFrame(() => this.animate());
         const time = performance.now() * 0.001;
-
-        if (this.heart) {
-            this.heart.position.y = Math.sin(time) * 0.2;
-        }
-
-        if (this.nebula) {
-            this.nebula.rotation.y = time * 0.05;
-        }
-
+        if (this.heart) this.heart.position.y = Math.sin(time) * 0.15;
+        if (this.nebula) this.nebula.rotation.y = time * 0.03;
         this.renderer.render(this.scene, this.camera);
     }
 };
 
-// Initialize
 document.addEventListener('DOMContentLoaded', () => PremiumEngine.init());
