@@ -149,6 +149,10 @@ const PremiumEngine = {
         const cursor = document.querySelector('.custom-cursor');
         const outline = document.querySelector('.custom-cursor-outline');
 
+        if (cursor && outline) {
+            document.body.classList.add('custom-cursor-active');
+        }
+
         window.addEventListener('mousemove', (e) => {
             gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
             gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.15 });
