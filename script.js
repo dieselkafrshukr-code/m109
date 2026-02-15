@@ -82,11 +82,11 @@ const App = {
         // Premium transition sequence
         const tl = gsap.timeline();
 
-        tl.to('.login-box', {
+        tl.to('.login-card', {
             duration: 0.8,
-            y: -20,
+            y: -50,
             opacity: 0,
-            scale: 0.95,
+            scale: 0.9,
             ease: "power4.inOut"
         })
             .to(this.loginPage, {
@@ -97,23 +97,22 @@ const App = {
             .fromTo(this.contentPage, {
                 display: 'block',
                 opacity: 0,
-                y: 40
+                y: 100
             }, {
-                duration: 1.2,
+                duration: 1.5,
                 opacity: 1,
                 y: 0,
                 ease: "expo.out",
                 onComplete: () => {
                     this.contentPage.classList.remove('hidden');
-                    ScrollTrigger.refresh(); // Refresh scroll trigger for new content
                 }
             });
     },
 
     loginFailure() {
         this.errorMessage.textContent = '❌ التاريخ غير صحيح، حاول مرة أخرى';
-        gsap.to('.login-box', {
-            x: 10,
+        gsap.to('.login-card', {
+            x: 20,
             duration: 0.1,
             repeat: 5,
             yoyo: true,

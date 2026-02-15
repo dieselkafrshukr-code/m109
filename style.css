@@ -1,260 +1,259 @@
-/* ==================== Eternal Bloom Design System ==================== */
+/* ==================== THEME: VELVET ROMANCE (Ultra-Premium) ==================== */
 :root {
-    --bg-deep: #0f0202;
-    /* Deepest Ruby Black */
-    --bg-surface: rgba(30, 5, 5, 0.7);
-    --primary: #d43f3f;
-    /* Ruby Red */
-    --primary-bright: #ff6b6b;
-    /* Vibrant Heart */
-    --secondary: #b76e79;
-    /* Rose Gold */
-    --accent: #8b0000;
-    /* Dark Blood Red */
-    --text-main: #fff5f5;
-    /* Silk White */
-    --text-muted: rgba(255, 245, 245, 0.6);
-    --glass-border: rgba(212, 63, 63, 0.2);
-
-    --grad-premium: radial-gradient(circle at center, #2a0505 0%, #0f0202 100%);
-    --grad-ruby: linear-gradient(135deg, #8b0000 0%, #d43f3f 50%, #4a0404 100%);
-    --grad-rose: linear-gradient(135deg, #b76e79 0%, #ffb7c5 100%);
-
-    --shadow-premium: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 63, 63, 0.1);
-    --glass-blur: blur(20px);
+    --primary: #ff3366;
+    /* Vibrant Rose */
+    --primary-glow: rgba(255, 51, 102, 0.4);
+    --bg-dark: #0f0104;
+    /* Deep Velvet Night */
+    --bg-gradient: radial-gradient(circle at center, #2a050c 0%, #0f0104 100%);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-white: #ffffff;
+    --text-pink: #ffb3c1;
+    --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
     font-family: 'Tajawal', sans-serif;
-    background: var(--bg-deep);
-    color: var(--text-main);
-    overflow-x: hidden;
-    line-height: 1.8;
+    background: var(--bg-dark);
+    background: var(--bg-gradient);
+    color: var(--text-white);
     min-height: 100vh;
-    cursor: default;
-    /* Keep cursor visible by default for reliability */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: auto !important;
+    /* Force cursor visibility */
 }
 
-/* ==================== Custom Cursor (Non-invasive) ==================== */
-.custom-cursor {
-    width: 6px;
-    height: 6px;
-    background: var(--primary-bright);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    box-shadow: 0 0 15px var(--primary-bright);
-}
-
-.custom-cursor-outline {
-    width: 30px;
-    height: 30px;
-    border: 1.5px solid var(--primary);
+/* ==================== Custom Cursor (Follower Only) ==================== */
+.cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out, opacity 0.3s ease;
+    opacity: 0;
+    /* Initially hidden until move */
 }
 
-/* ==================== Visual Layers ==================== */
-.visual-overlay {
+/* ==================== Visual Canvas ==================== */
+#canvas3d {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
-    background: var(--grad-premium);
-}
-
-.noise-overlay {
-    position: absolute;
-    inset: 0;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3BaseFilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/baseFilter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     pointer-events: none;
 }
 
-.vignette {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, transparent 30%, rgba(0, 0, 0, 0.9) 100%);
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     pointer-events: none;
 }
 
 /* ==================== Login Section ==================== */
 .login-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    max-width: 420px;
     padding: 20px;
+    z-index: 10;
 }
 
-.login-box {
-    background: var(--bg-surface);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+.login-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid var(--glass-border);
     border-radius: 40px;
-    padding: 5rem 3rem;
-    max-width: 460px;
-    width: 100%;
-    box-shadow: var(--shadow-premium);
+    padding: 60px 40px;
     text-align: center;
+    box-shadow: var(--shadow);
+    animation: floating 6s ease-in-out infinite;
     position: relative;
-    overflow: hidden;
 }
 
-.premium-logo {
+.login-card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 40px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent, rgba(255, 51, 102, 0.3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.heart-icon-wrapper {
     width: 80px;
     height: 80px;
-    background: var(--grad-ruby);
+    background: rgba(255, 51, 102, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 2.5rem;
-    box-shadow: 0 0 25px rgba(212, 63, 63, 0.4);
-    color: white;
+    margin: 0 auto 30px;
+    color: var(--primary);
+    box-shadow: 0 0 30px var(--primary-glow);
 }
 
 .login-title {
     font-family: 'Amiri', serif;
-    font-size: 3rem;
-    background: var(--grad-rose);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    color: var(--text-white);
+    text-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
 }
 
 .login-subtitle {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    margin-bottom: 3.5rem;
-    font-weight: 300;
+    font-size: 1rem;
+    color: var(--text-pink);
+    margin-bottom: 40px;
+    opacity: 0.8;
 }
 
-.input-field-wrapper input {
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-group input {
     width: 100%;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(212, 63, 63, 0.3);
+    border: 1px solid var(--glass-border);
     border-radius: 15px;
-    padding: 1.3rem;
+    padding: 18px;
     color: white;
+    font-size: 1.1rem;
     text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    transition: 0.4s;
+    transition: all 0.3s ease;
 }
 
-.input-field-wrapper input:focus {
+.input-group input:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--primary-bright);
-    box-shadow: 0 0 20px rgba(212, 63, 63, 0.2);
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px var(--primary-glow);
 }
 
-.submit-btn {
+.login-btn {
     width: 100%;
-    background: var(--grad-ruby);
+    background: var(--primary);
     color: white;
     border: none;
     border-radius: 15px;
-    padding: 1.3rem;
+    padding: 18px;
+    font-size: 1.1rem;
     font-weight: 700;
-    font-size: 1.15rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(255, 51, 102, 0.3);
 }
 
-.submit-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(212, 63, 63, 0.5);
-    background: var(--primary-bright);
+.login-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(255, 51, 102, 0.5);
+    background: #ff4d7d;
 }
 
-/* ==================== Content Area ==================== */
-.content-wrapper {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 120px 25px;
+.error-message {
+    color: var(--primary);
+    margin-top: 15px;
+    font-size: 0.9rem;
+    height: 20px;
 }
 
-.main-title {
-    font-family: 'Amiri', serif;
-    font-size: 5.5rem;
-    text-align: center;
-    background: var(--grad-rose);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 8rem;
-    font-weight: 700;
+/* ==================== Content Section ==================== */
+.content-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 100px 25px;
 }
 
 .message-card {
-    background: var(--bg-surface);
-    backdrop-filter: var(--glass-blur);
+    background: var(--glass-bg);
+    backdrop-filter: blur(30px);
     border: 1px solid var(--glass-border);
     border-radius: 50px;
-    padding: 7rem 4rem;
-    box-shadow: var(--shadow-premium);
+    padding: 80px 50px;
+    box-shadow: var(--shadow);
+}
+
+.verse {
+    margin-bottom: 60px;
+    text-align: center;
 }
 
 .verse p {
-    font-size: 1.7rem;
-    color: var(--text-main);
-    line-height: 2.5;
-    text-align: center;
-    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    line-height: 2.3;
+    color: var(--text-white);
     font-weight: 300;
 }
 
-.special-highlight {
+.highlight {
     font-family: 'Amiri', serif;
-    font-size: 3.2rem;
-    color: var(--primary-bright) !important;
-    text-shadow: 0 0 20px rgba(212, 63, 63, 0.3);
-}
-
-.premium-divider {
-    text-align: center;
-    margin: 5rem 0;
+    font-size: 3.5rem;
     color: var(--primary);
-    font-size: 1.5rem;
-    opacity: 0.6;
+    display: block;
+    margin-bottom: 20px;
 }
 
-/* ==================== Hidden State ==================== */
+.divider {
+    color: var(--primary);
+    font-size: 2rem;
+    margin: 40px 0;
+    opacity: 0.4;
+}
+
+/* ==================== Animations ==================== */
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
 .hidden {
     display: none !important;
 }
 
-/* ==================== Responsive ==================== */
-@media (max-width: 768px) {
-    .main-title {
-        font-size: 3.5rem;
+@media (max-width: 600px) {
+    .login-title {
+        font-size: 2.2rem;
     }
 
     .message-card {
-        padding: 4rem 2rem;
+        padding: 40px 20px;
     }
 
     .verse p {
-        font-size: 1.4rem;
-    }
-
-    .login-box {
-        padding: 4rem 2rem;
+        font-size: 1.3rem;
     }
 }
